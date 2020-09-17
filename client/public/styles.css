@@ -1,0 +1,12 @@
+*{
+    box-sizing: border-box;
+}
+body {
+    background: #6f2a34;
+}
+.welcome-container{
+    border-radius: 50px;
+    background: #6f2a34;
+    box-shadow:  -26px -26px 51px #501e25, 26px 26px 51px #8e3643;
+    width: 50vw;
+}
