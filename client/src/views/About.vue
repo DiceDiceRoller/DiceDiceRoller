@@ -1,5 +1,21 @@
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
+   <div class="about">
+    <h1> All About Dice </h1>
+    <Banner></Banner>
   </div>
 </template>
+
+<script>
+import Banner from '../components/diceBanner.vue'
+
+export default {
+  name: 'DiceGamble',
+  components:{
+    Banner
+  }
+}
+</script>
+
+<style>
+
+</style>
