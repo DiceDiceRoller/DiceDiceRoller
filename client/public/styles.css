@@ -5,8 +5,13 @@ body {
     background: #6f2a34;
 }
 .welcome-container{
-    border-radius: 50px;
+    border-radius: 30px;
     background: #6f2a34;
     box-shadow:  -26px -26px 51px #501e25, 26px 26px 51px #8e3643;
     width: 50vw;
+}
+.start-game {
+    font-family: 'Monoton', cursive;
+    font-size: 2rem;
+    color: white;
 }
