@@ -1,17 +1,21 @@
 <template>
-<div class="container">
-</div>
+  <div class="container">
+    <Dices></Dices>
+  </div>
 </template>
 
 <script>
 // import Swal from 'sweetalert2'
 import swal from 'sweetalert'
+import Dices from '../components/Dice'
+
 export default {
   name: 'Home',
   components: {
   },
   data () {
     return {
+      Dices
     }
   },
   created () {
