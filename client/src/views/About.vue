@@ -11,7 +11,7 @@ import Banner from '../components/diceBanner'
 import Board from '../components/diceBoard'
 export default {
   name: 'DiceGamble',
-  components:{
+  components: {
     Banner,
     Board
   }
