@@ -17,7 +17,7 @@ export default {
     msg: String
   },
   methods: {
-    moveInside(){
+    moveInside () {
       this.$router.push('/home')
     }
   }
