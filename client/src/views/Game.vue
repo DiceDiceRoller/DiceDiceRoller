@@ -1,36 +1,41 @@
 <template>
-  <div class="container-player d-flex ">
-    <div class="mx-auto row">
-      <div class="player-one mx-2">
-        <div>
-        <h2 class="player-info">Player Name(player 1)</h2>
-        <h3 class="player-info mt-5">Player Score</h3>
-        </div>
-        <div class="score my-auto">
-          50
-        </div>
-
-      </div>
-      <div class="player-two mx-2">
-        <div>
-        <h2 class="player-info">Player Name(player2)</h2>
-        <h3 class="player-info mt-5">Player Score</h3>
-        </div>
-        <div class="score my-auto">
-          50
-        </div>
-      </div>
+   <div class="about">
+     {{ players }}
+    <h1> All About Dice </h1>
+    <Banner></Banner>
+    <Player
+      :v-for="player in players"
+      :playerName="player"
+      :key="index"
+      :playerPoints="playerPoints[player]"
+    ></Player>
+    <CurrentScore></CurrentScore>
+    <div class="container">
+    <DiceContainer></DiceContainer>
     </div>
   </div>
 </template>
 
 <script>
+import Banner from '../components/diceBanner'
+import Player from '../components/playerCards'
+import DiceContainer from '../components/diceContainer'
+import CurrentScore from '../components/CurrentScore'
 export default {
+  name: 'DiceGamble',
+  components: {
+    Banner,
+    Player,
+    DiceContainer,
+    CurrentScore
+  },
   data: function () {
     return {
       players: this.$store.state.players,
       active: '',
-      playerPoints: {},
+      playerPoints: {
+        asd: 33
+      },
       data: {
         rollCounter: 0,
         firstDice: 0,
@@ -66,11 +71,6 @@ export default {
     }
   },
   watch: {
-    // active (newVal, oldVal) {
-    //   console.log(newVal)
-    // },
-    // playerPoints (newVal, oldVal) {
-    // }
   }
 }
 </script>

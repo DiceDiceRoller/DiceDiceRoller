@@ -19,7 +19,8 @@ const data = {
   pointBuffer: 0
 }
 
-let players
+let players = []
+console.log('players:', players);
 let turnCounter
 
 io.on('connection', (socket) => {
@@ -61,9 +62,9 @@ io.on('connection', (socket) => {
   })
 
   socket.on('addPlayer', (name) => {
-    // if (Object.keys(data.playerPoints).length == 2) {
-    //   return socket.emit('errorFull', 'Room full')
-    // }
+    if (Object.keys(data.playerPoints).length == 2) {
+      return socket.emit('errorFull', 'Room full')
+    }
     data.playerPoints[name] = 0
     players = Object.keys(data.playerPoints)
     console.log(players);

@@ -32,7 +32,11 @@ export default {
           this.$socket.emit('addPlayer', value)
           swal(`Alright ${value}, let's get it!`)
             .then(value => {
-              this.$router.push('/lobby')
+              if (this.$store.state.players.length === 2) {
+                this.$router.push('/game')
+              } else {
+                this.$router.push('/lobby')
+              }
             })
         })
     }
@@ -43,6 +47,9 @@ export default {
     },
     readyToPlay (value) {
       this.$store.dispatch('setReady')
+    },
+    errorFull (message) {
+      console.log(message)
     }
   }
 }

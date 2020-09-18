@@ -22,7 +22,7 @@ export default {
     addPlayer () {
       this.$store.commit('addPlayer', this.name)
       this.$socket.emit('addPlayer', this.name)
-      this.$router.push('/about')
+      this.$router.push('/lobby')
     }
   },
   sockets: {
