@@ -3,6 +3,7 @@ const http = require('http').createServer(app)
 const io = require('socket.io')(http)
 
 const cors = require('cors')
+const { changeTurn } = require('./helpers/roller')
 // const route = require('./route')
 
 const port = 3000
@@ -11,32 +12,39 @@ app.use(cors())
 // app.use(route)
 
 const data = {
+  playerPoints: {},
   rollCounter: 0,
   firstDice: 0,
   secondDice: 0,
   pointBuffer: 0
 }
 
-const playerPoints = {}
 let players
 let turnCounter
 
 io.on('connection', (socket) => {
   console.log('a user connected');
-  socket.emit('test', 'abcde')
+  socket.on('nextTurn', () => {
+    turnCounter = changeTurn(players, turnCounter)
+    io.sockets.emit('setActive', players[turnCounter])
+  })
 
   socket.on('addPlayer', (name) => {
-    if (Object.keys(playerPoints).length == 2) {
-      return socket.emit('errorFull', 'Room full')
-    }
-    playerPoints[name] = 0
-    players = Object.keys(playerPoints)
+    // if (Object.keys(data.playerPoints).length == 2) {
+    //   return socket.emit('errorFull', 'Room full')
+    // }
+    data.playerPoints[name] = 0
+    players = Object.keys(data.playerPoints)
+    console.log(players);
+    io.sockets.emit('players', players)
     return socket.emit('players', players)
   })
 
   socket.on('start', () => {
     turnCounter = Math.floor(Math.random() * players.length)
-    return socket.emit('setActive', players[turnCounter])
+
+    turnCounter = changeTurn(players, turnCounter)
+    io.sockets.emit('setActive', players[turnCounter])
   })
 
   socket.on('roll', () => {
@@ -46,19 +54,28 @@ io.on('connection', (socket) => {
     data.pointBuffer += data.firstDice + data.secondDice
     if (data.firstDice == 1 || data.secondDice == 1) {
       data.pointBuffer = 0
+      
+      turnCounter = changeTurn(players, turnCounter)
+      io.sockets.emit('setActive', players[turnCounter])
     }
-    socket.emit('roll', data)
+    
+    io.sockets.emit('roll',data)
   })
 
-  socket.on('accept', (player) => {
-    playerPoints[player] += data.pointBuffer
+  socket.on('accept', (playerAndPoint) => {
+    console.log(data);
+    data.playerPoints[playerAndPoint.player] += playerAndPoint.point
     data.pointBuffer = 0
-    if (turnCounter != players.length - 1) {
-      turnCounter += 1
-    } else {
-      turnCounter = 0
+    console.log(data.playerPoints);
+
+    if (data.playerPoints[playerAndPoint.player] >= 50) {
+      io.sockets.emit('win', playerAndPoint.player)
     }
-    return socket.emit('setActive', players[turnCounter])
+
+    io.sockets.emit('setPoint', {playerPoints: data.playerPoints, pointBuffer: 0})
+
+    turnCounter = changeTurn(players, turnCounter)
+    io.sockets.emit('setActive', players[turnCounter])
   })
 })
 
