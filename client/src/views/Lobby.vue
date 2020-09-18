@@ -1,6 +1,5 @@
 <template>
   <div class="container">
-    <!-- <Dices></Dices> -->
     <div>
     <WaitingRoom v-if="!this.$store.state.isReady"></WaitingRoom>
     </div>
@@ -13,14 +12,12 @@
 <script>
 // import Swal from 'sweetalert2'
 import swal from 'sweetalert'
-// import Dices from '../components/Dice'
 import WaitingRoom from '../components/waitingRoom'
 // import diceContainer from '../components/diceContainer'
 
 export default {
   name: 'Home',
   components: {
-    Dices,
     WaitingRoom
     // diceContainer
     // Dices

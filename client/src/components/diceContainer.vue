@@ -2,10 +2,12 @@
   <div class="dice-container my-5 row p-3">
     <div class="box ml-1 wobble-hor-top" @click="$event.target.classList.toggle('wobble-hor-top')">
     </div>
+    <Dices></Dices>
   </div>
 </template>
 
 <script>
+import Dices from './Dice'
 export default {
   name: 'diceContainer',
   data () {
@@ -15,6 +17,9 @@ export default {
       numOne: null,
       numTwo: null
     }
+  },
+  components: {
+    Dices
   },
   methods: {
   }
