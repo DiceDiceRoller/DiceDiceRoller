@@ -1,21 +1,31 @@
 <template>
   <div class="container">
-    <Dices></Dices>
+    <!-- <Dices></Dices> -->
+    <div>
+    <WaitingRoom></WaitingRoom>
+    </div>
+    <div>
+      <diceContainer></diceContainer>
+    </div>
   </div>
 </template>
 
 <script>
 // import Swal from 'sweetalert2'
 import swal from 'sweetalert'
-import Dices from '../components/Dice'
+// import Dices from '../components/Dice'
+import WaitingRoom from '../components/waitingRoom'
+import diceContainer from '../components/diceContainer'
 
 export default {
   name: 'Home',
   components: {
+    WaitingRoom,
+    diceContainer
+    // Dices
   },
   data () {
     return {
-      Dices
     }
   },
   created () {

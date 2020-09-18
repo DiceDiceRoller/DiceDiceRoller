@@ -1,3 +1,29 @@
+/* KEYFRAMES */
+@keyframes wobble-hor-top {
+    0%,
+    100% {
+      transform: translateX(0%);
+      transform-origin: 50% 50%;
+    }
+    15% {
+      transform: translateX(-30px) rotate(6deg);
+    }
+    30% {
+      transform: translateX(15px) rotate(-6deg);
+    }
+    45% {
+      transform: translateX(-15px) rotate(3.6deg);
+    }
+    60% {
+      transform: translateX(9px) rotate(-2.4deg);
+    }
+    75% {
+      transform: translateX(-6px) rotate(1.2deg);
+    }
+  }
+  
+
+/* GENERAL */
 *{
     box-sizing: border-box;
     font-family: 'Syne', sans-serif;
@@ -9,7 +35,7 @@ body {
     border-radius: 30px;
     background: #6f2a34;
     box-shadow:  -26px -26px 51px #501e25, 26px 26px 51px #8e3643;
-    width: 45vw;
+    width: 450px;
     transition: 1.5s ease-in-out;
 }
 .welcome-container:hover{
@@ -30,4 +56,38 @@ body {
     background-color: aliceblue;
     height: 40vh;
 }
+.waiting-room-container {
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 50px;
+    background: linear-gradient(315deg, #64262f, #772d38);
+    box-shadow:  -28px -28px 56px #3c171c, 28px 28px 56px #a23d4c;
+    height: 400px;
+    width: auto;
+}
+lottie-player {
+    max-height: 30vh;
+}
 
+.dice-container {
+    border-radius: 50px;
+    background: #6f2a34;
+    box-shadow: inset 20px 20px 50px #5e242c, inset -20px -20px 50px #80303c;
+    height: 350px;
+}
+.dice {
+    background-color: tomato;
+}
+.wobble-hor-top {
+	animation: wobble-hor-top 1s infinite alternate-reverse;
+}
+.box{
+    width: 20%;
+    height: 60%;
+    border-radius: 20px;
+    background: linear-gradient(315deg, #64262f, #772d38);
+    box-shadow:  -28px -8px 56px #3c171c, 28px 28px 56px #a23d4c;
+}

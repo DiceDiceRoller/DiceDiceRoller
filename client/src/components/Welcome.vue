@@ -15,7 +15,8 @@ export default {
   name: 'Welcome',
   data: () => {
     return {
-      playerName: ''
+      playerName: '',
+      isNowReady: null
     }
   },
   props: {
@@ -28,12 +29,20 @@ export default {
       })
         .then((value) => {
           this.playerName = value
+          this.$socket.emit('playerName', value)
           swal(`Alright ${value}, let's get it!`)
             .then(value => {
               this.$router.push('/home')
             })
         })
-      this.$router.push('/home')
+    }
+  },
+  sockets: {
+    connectedPlayer (value) {
+      console.log(value)
+    },
+    readyToPlay (value) {
+      this.$store.dispatch('setReady')
     }
   }
 }
