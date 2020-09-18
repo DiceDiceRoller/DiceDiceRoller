@@ -125,3 +125,12 @@ lottie-player {
   font-size: 10rem;
   text-shadow:  1px 1px 10px #babebf, -1px -1px 10px #fcffff;
 }
+
+.chat-box {
+  max-height: 20vw;
+  overflow: auto;
+}
+
+.chatbox{
+  background: #6f2a34;
+}

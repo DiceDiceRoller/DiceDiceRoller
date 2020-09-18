@@ -6,7 +6,8 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     playerName: 'alieourgh klseg',
-    players: []
+    players: [],
+    isWin: ''
   },
   mutations: {
     addPlayer (state, playerName) {
@@ -15,6 +16,9 @@ export default new Vuex.Store({
     allPlayers (state, players) {
       state.players = players
       console.log(state.players)
+    },
+    isWin (state, value) {
+      state.isWin = value
     }
   },
   actions: {

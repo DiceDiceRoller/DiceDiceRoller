@@ -11,7 +11,7 @@
     <CurrentScore
       :buffer="data.pointBuffer"
     ></CurrentScore>
-    <div class="row d-flex" v-if="active === this.$store.state.playerName">
+    <div class="row d-flex" v-if="active == this.$store.state.playerName">
       <div class="col">
         <h3 @click="roll">Roll</h3>
       </div>
@@ -76,6 +76,10 @@ export default {
     },
     setPoint (points) {
       this.playerPoints = points
+    },
+    win (value) {
+      this.$store.commit('isWin', value)
+      this.$router.push('/win')
     }
   },
   watch: {

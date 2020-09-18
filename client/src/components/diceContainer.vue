@@ -1,8 +1,8 @@
 <template>
   <div class="dice-container my-5 row p-3">
     <div class="container justify-content-center">
-      <img :src="`./assets/dice_${firstDice}.png`" width="25%">
-      <img :src="`./assets/dice_${secondDice}.png`" width="25%">
+      <img :src="`./assets/dice_${firstDice}.png`" width="25%" alt="...">
+      <img :src="`./assets/dice_${secondDice}.png`" width="25%" alt="...">
     </div>
   </div>
 </template>

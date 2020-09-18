@@ -6,23 +6,11 @@
                         {{user.username}} {{user.type}}
                     </p>
                 </div>
-                <div v-if="!ready">
-                    <h4>Enter your username</h4>
-                    <form @submit.prevent="addUser">
-                        <div class="form-group row">
-                            <input type="text" class="form-control col-9" v-model="username"
-                                placeholder="Enter username here">
-                            <input type="submit" value="Join" class="btn btn-sm btn-info ml-1">
-
-                        </div>
-                    </form>
-                </div>
-                <h2 v-else>{{$store.state.playerName}}</h2>
-                <div class="card bg-info" v-if="ready">
+                <div class="card chatbox" v-if="ready">
                     <div class="card-header text-white">
-                        <h4>My Chat App</h4>
+                        <h4>Chat Room</h4>
                     </div>
-                    <ul class="list-group list-group-flush text-right">
+                    <ul class="list-group list-group-flush text-right chat-box">
                         <small v-if="typing" class="text-white">{{typing}} is typing</small>
                         <li class="list-group-item" v-for="(message, index) in messages" :key="index">
                             <span :class="{'float-left':message.type === 1}">
@@ -75,7 +63,6 @@ export default {
                     type: 0,
                     user: 'Me',
                 });
-
                 this.$socket.emit('chatMessage', {
                     message: this.newMessage,
                     user: this.username
