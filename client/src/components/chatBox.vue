@@ -1,22 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>ChatApp_Socket</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
-</head>
-
-<body>
-    <div id="app">
+<template>
         <div class="container">
             <div class="col-lg-6 offset-lg-3">
 
                 <div v-if="ready">
-                    <p v-for="user in info">
+                    <p v-for="user in info" :key="user">
                         {{user.username}} {{user.type}}
                     </p>
                 </div>
@@ -39,7 +26,7 @@
                     </div>
                     <ul class="list-group list-group-flush text-right">
                         <small v-if="typing" class="text-white">{{typing}} is typing</small>
-                        <li class="list-group-item" v-for="message in messages">
+                        <li class="list-group-item" v-for="message in messages" :key="message">
                             <span :class="{'float-left':message.type === 1}">
                                 {{message.message}}
                                 <small>:{{message.user}}</small>
@@ -58,10 +45,20 @@
                 </div>
             </div>
         </div>
-    </div>
+</template>
 
-</body>
+<script>
+export default {
 
+}
+</script>
+
+<style>
+.container{
+  overflow-x: hidden; /* Hide horizontal scrollbar */
+  overflow-y: scroll; /* Add vertical scrollbar */
+}
+</style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js"></script>
 <script src="/socket.io/socket.io.js"></script>
 
@@ -158,5 +155,3 @@
 
     });
 </script>
-
-</html>
