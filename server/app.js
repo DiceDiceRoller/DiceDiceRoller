@@ -24,6 +24,37 @@ let turnCounter
 
 io.on('connection', (socket) => {
   console.log('a user connected');
+
+  // ========================= CHATROOM =========================
+  socket.emit('connections', Object.keys(io.sockets.connected).length);
+
+  socket.on('disconnect', () => {
+      console.log("A user disconnected");
+  });
+
+  socket.on('chat-message', (data) => {
+      socket.broadcast.emit('chat-message', (data));
+  });
+
+  socket.on('typing', (data) => {
+      socket.broadcast.emit('typing', (data));
+  });
+
+  socket.on('stopTyping', () => {
+      socket.broadcast.emit('stopTyping');
+  });
+
+  socket.on('joined', (data) => {
+      socket.broadcast.emit('joined', (data));
+  });
+
+  socket.on('leave', (data) => {
+      socket.broadcast.emit('leave', (data));
+  });
+
+
+  // ========================= Roller =========================
+
   socket.on('nextTurn', () => {
     turnCounter = changeTurn(players, turnCounter)
     io.sockets.emit('setActive', players[turnCounter])
@@ -68,11 +99,11 @@ io.on('connection', (socket) => {
     data.pointBuffer = 0
     console.log(data.playerPoints);
 
-    if (data.playerPoints[playerAndPoint.player] >= 50) {
-      io.sockets.emit('win', playerAndPoint.player)
-    }
-
     io.sockets.emit('setPoint', {playerPoints: data.playerPoints, pointBuffer: 0})
+
+    if (data.playerPoints[playerAndPoint.player] >= 50) {
+      return io.sockets.emit('win', playerAndPoint.player)
+    }
 
     turnCounter = changeTurn(players, turnCounter)
     io.sockets.emit('setActive', players[turnCounter])

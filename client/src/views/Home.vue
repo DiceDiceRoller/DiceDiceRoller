@@ -15,6 +15,7 @@ export default {
   },
   data () {
     return {
+      name: ''
       // dice: [5, 6]
     }
   },

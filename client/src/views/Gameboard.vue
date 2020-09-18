@@ -1,24 +1,18 @@
 <template>
-  <div class="container-player d-flex ">
-    <div class="mx-auto row">
-      <div class="player mx-2">
-        <h2>{{ players[0] }}</h2>
-        <h3>{{ playerPoints[players[0]] }}</h3>
-        <div class="current-box">
-          <div class="player-label">Current</div>
-          <div class="player-score">Total Score</div>
-        </div>
-      </div>
-      <div class="player mx-2">
-        <h2>{{ players[1] }}</h2>
-        <h3>{{ playerPoints[players[1]] }}</h3>
-        <div class="current-box">
-          <div class="player-label">Current</div>
-          <div class="player-score">Total Score</div>
-        </div>
-      </div>
-    </div>
+<div>
+  {{players}}
+  <b-button variant="success" type="button" @click="start">Start</b-button>
+  <h3>Now playing: {{active}}</h3>
+  <div v-if="active == this.$store.state.playerName">
+    <b-button variant="success" type="button" @click="roll">Roll</b-button>
+    <p>first dice: {{ data.firstDice }}</p>
+    <p>second dice: {{ data.secondDice}}</p>
+    <p>pointBuffer: {{data.pointBuffer}}</p>
+    <b-button variant="success" type="button" @click="accept">accept</b-button>
   </div>
+    <p>totalPoint: {{playerPoints}}</p>
+  <b-button variant="success" type="button" @click="nextTurn">next turn</b-button>
+</div>
 </template>
 
 <script>
@@ -48,9 +42,13 @@ export default {
     },
     accept () {
       this.$socket.emit('accept', { player: this.active, point: this.data.pointBuffer })
+      this.data.pointBuffer = 0
     }
   },
   sockets: {
+    players (players) {
+      this.players = players
+    },
     roll (data) {
       this.data = data
     },
@@ -58,17 +56,15 @@ export default {
       this.active = name
     },
     setPoint (points) {
-      console.log(points, '<<<<<')
-      console.log(this.data)
       this.playerPoints = points
     }
   },
   watch: {
-    active (newVal, oldVal) {
-      console.log(newVal)
-    },
-    player (newVal, oldVal) {
-    }
+    // active (newVal, oldVal) {
+    //   console.log(newVal)
+    // },
+    // playerPoints (newVal, oldVal) {
+    // }
   }
 }
 </script>
