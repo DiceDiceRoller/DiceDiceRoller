@@ -17,10 +17,10 @@
                         </div>
                     </form>
                 </div>
-                <h2 v-else>{{username}}</h2>
+                <h2 v-else>{{$store.state.playerName}}</h2>
                 <div class="card bg-info" v-if="ready">
                     <div class="card-header text-white">
-                        <h4>My Chat App <span class="float-right">{{connections}} connections</span></h4>
+                        <h4>My Chat App</h4>
                     </div>
                     <ul class="list-group list-group-flush text-right">
                         <small v-if="typing" class="text-white">{{typing}} is typing</small>
@@ -50,8 +50,8 @@ export default {
          return {
              messages: [],
              typing: false,
-             username: null,
-             ready: false,
+             username: this.$store.state.playerName,
+             ready: true,
              info: [],
              connections: 0,
             newMessage: null
@@ -81,11 +81,6 @@ export default {
                     user: this.username
                 });
                 this.newMessage = null;
-            },
-
-            addUser() {
-                this.ready = true;
-                this.$socket.emit('joined', this.username)
             }
         },
         sockets: {
