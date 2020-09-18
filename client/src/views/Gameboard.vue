@@ -1,27 +1,18 @@
 <template>
-  <div class="container-player d-flex ">
-    <div class="mx-auto row">
-      <div class="player-one mx-2">
-        <div>
-        <h2 class="player-info">Player Name(player 1)</h2>
-        <h3 class="player-info mt-5">Player Score</h3>
-        </div>
-        <div class="score my-auto">
-          50
-        </div>
-
-      </div>
-      <div class="player-two mx-2">
-        <div>
-        <h2 class="player-info">Player Name(player2)</h2>
-        <h3 class="player-info mt-5">Player Score</h3>
-        </div>
-        <div class="score my-auto">
-          50
-        </div>
-      </div>
-    </div>
+<div>
+  {{players}}
+  <b-button variant="success" type="button" @click="start">Start</b-button>
+  <h3>Now playing: {{active}}</h3>
+  <div v-if="active == this.$store.state.playerName">
+    <b-button variant="success" type="button" @click="roll">Roll</b-button>
+    <p>first dice: {{ data.firstDice }}</p>
+    <p>second dice: {{ data.secondDice}}</p>
+    <p>pointBuffer: {{data.pointBuffer}}</p>
+    <b-button variant="success" type="button" @click="accept">accept</b-button>
   </div>
+    <p>totalPoint: {{playerPoints}}</p>
+  <b-button variant="success" type="button" @click="nextTurn">next turn</b-button>
+</div>
 </template>
 
 <script>
@@ -55,6 +46,9 @@ export default {
     }
   },
   sockets: {
+    players (players) {
+      this.players = players
+    },
     roll (data) {
       this.data = data
     },

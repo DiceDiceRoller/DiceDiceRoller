@@ -12,6 +12,24 @@ export default {
   name: 'Home',
   components: {
     Welcome
+  },
+  data: function () {
+    return {
+      name: ''
+    }
+  },
+  methods: {
+    addPlayer () {
+      this.$store.commit('addPlayer', this.name)
+      this.$socket.emit('addPlayer', this.name)
+      this.$router.push('/about')
+    }
+  },
+  sockets: {
+    players (players) {
+      console.log(this.$store.state.players)
+      this.$store.commit('allPlayers', players)
+    }
   }
 }
 </script>
