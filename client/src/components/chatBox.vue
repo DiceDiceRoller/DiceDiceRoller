@@ -54,6 +54,10 @@ export default {
 </script>
 
 <style>
+.container{
+  overflow-x: hidden; /* Hide horizontal scrollbar */
+  overflow-y: scroll; /* Add vertical scrollbar */
+}
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js"></script>
 <script src="/socket.io/socket.io.js"></script>
