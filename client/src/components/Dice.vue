@@ -1,14 +1,6 @@
 <template>
-    <div>
-        <!-- <div class="content" v-if="!start">
-            <h2>Player 1 Score : {{firstUser}}</h2>
-            <h2>Player 2 Score : {{secondUser}} </h2>
-        </div> -->
-        <div class="content">
-          <button @click="getRandom" v-if="!start" class="btn">Roll Dice</button>
-          <button @click="resetGame"  v-if="!start" >Restart</button>
-        </div>
-
+  <div>
+    
   </div>
 </template>
 
