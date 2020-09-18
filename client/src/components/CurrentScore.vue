@@ -10,7 +10,7 @@
 
 <script>
 export default {
-name: 'TotalScore'
+  name: 'TotalScore'
 }
 </script>
 

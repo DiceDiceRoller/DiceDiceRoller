@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Welcome from '../views/Welcome.vue'
-import Home from '../views/Home.vue'
+import Lobby from '../views/Lobby.vue'
 import Game from '../views/Gameboard.vue'
 
 Vue.use(VueRouter)
@@ -21,9 +21,9 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
   },
   {
-    path: '/home',
-    name: 'Home',
-    component: Home
+    path: '/lobby',
+    name: 'Lobby',
+    component: Lobby
   },
   {
     path: '/game',
