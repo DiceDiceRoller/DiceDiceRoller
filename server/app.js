@@ -77,6 +77,7 @@ io.on('connection', (socket) => {
 
   socket.on('start', () => {
     turnCounter = Math.floor(Math.random() * players.length)
+    io.sockets.emit('setPoint', data.playerPoints)
 
     turnCounter = changeTurn(players, turnCounter)
     io.sockets.emit('setActive', players[turnCounter])
