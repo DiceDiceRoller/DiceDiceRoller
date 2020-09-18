@@ -2,7 +2,7 @@
   <div class="dice-container my-5 row p-3">
     <div class="box ml-1 wobble-hor-top" @click="$event.target.classList.toggle('wobble-hor-top')">
     </div>
-    <Dices></Dices>
+    <!-- <Dices></Dices> -->
   </div>
 </template>
 

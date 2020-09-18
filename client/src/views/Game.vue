@@ -1,13 +1,10 @@
 <template>
    <div class="about">
-     {{ players }}
     <h1> All About Dice </h1>
     <Banner></Banner>
     <Player
-      :v-for="player in players"
-      :playerName="player"
-      :key="index"
-      :playerPoints="playerPoints[player]"
+      :players="players"
+      :playerPoints="playerPoints"
     ></Player>
     <CurrentScore></CurrentScore>
     <div class="container">
@@ -36,7 +33,7 @@ export default {
     return {
       active: '',
       playerPoints: {
-        asd: 33
+        qwe: 33
       },
       data: {
         rollCounter: 0,
