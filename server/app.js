@@ -8,8 +8,11 @@ io.on('connection', (socket) => {
   io.emit('connectedPlayer', 'Ada yang masuk bos')
   socket.on('playerName', (data) => {
     player.push(data)
-    if(player.length === 1){
+    console.log(player)
+    if(player.length > 1){
       io.emit('readyToPlay', true)
+      this.player = []
+      console.log(player)
     }
     console.log(data)
   })

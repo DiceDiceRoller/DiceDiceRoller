@@ -48,13 +48,29 @@ body {
     color: white;
 }
 
-.container-playe{
+.container-player{
     padding: 1rem;
+    border-radius: 10px;
 }
 
-.player{
+.player-one, .player-two{
     background-color: aliceblue;
-    height: 40vh;
+    height: 30vh;
+    padding: 1rem;
+    border-radius: 10px;
+    background: linear-gradient(315deg, #64262f, #772d38);
+    box-shadow:  -28px 28px 56px #3c171c, 28px 28px 56px #a23d4c;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;  
+}
+.player-two{
+  background: linear-gradient(315deg, #64262f, #772d38);
+  box-shadow: 28px 28px 56px #3c171c, 28px 28px 56px #a23d4c;
+}
+.player-info{
+  font-family: 'Monoton', cursive;
+  color:white
 }
 .waiting-room-container {
     color: white;
@@ -90,4 +106,16 @@ lottie-player {
     border-radius: 20px;
     background: linear-gradient(315deg, #64262f, #772d38);
     box-shadow:  -28px -8px 56px #3c171c, 28px 28px 56px #a23d4c;
+}
+.score {
+  font-size: 5rem;
+  border: solid 2px;
+  margin: 4rem;
+  border-radius: 20px;
+}
+.totalscore {
+  color: white;
+  width: 40vw;
+  font-size: 10rem;
+  text-shadow:  1px 1px 10px #babebf, -1px -1px 10px #fcffff;
 }

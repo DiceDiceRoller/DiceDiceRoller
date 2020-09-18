@@ -1,20 +1,23 @@
 <template>
   <div class="container-player d-flex ">
     <div class="mx-auto row">
-      <div class="player mx-2">
-        <h2>Player Name(player 1)</h2>
-        <h3>Player Score</h3>
-        <div class="current-box">
-          <div class="player-label">Current</div>
-          <div class="player-score">Total Score</div>
+      <div class="player-one mx-2">
+        <div>
+        <h2 class="player-info">Player Name(player 1)</h2>
+        <h3 class="player-info mt-5">Player Score</h3>
         </div>
+        <div class="score my-auto">
+          50
+        </div>
+
       </div>
-      <div class="player mx-2">
-        <h2>Player Name(player2)</h2>
-        <h3>Player Score</h3>
-        <div class="current-box">
-          <div class="player-label">Current</div>
-          <div class="player-score">Total Score</div>
+      <div class="player-two mx-2">
+        <div>
+        <h2 class="player-info">Player Name(player2)</h2>
+        <h3 class="player-info mt-5">Player Score</h3>
+        </div>
+        <div class="score my-auto">
+          50
         </div>
       </div>
     </div>
@@ -22,7 +25,11 @@
 </template>
 
 <script>
-export default {}
+export default {
+  name: 'diceBoard',
+  components:{
+  }
+}
 </script>
 
 <style>
