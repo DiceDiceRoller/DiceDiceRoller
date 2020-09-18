@@ -1,6 +1,5 @@
 <template>
    <div class="about">
-    <h1> All About Dice </h1>
     <Banner></Banner>
     <Player
       :players="players"
@@ -9,7 +8,7 @@
     <CurrentScore></CurrentScore>
     <div class="container">
     <DiceContainer></DiceContainer>
-    <!-- <ChatBox></ChatBox> -->
+    <ChatBox></ChatBox>
     </div>
   </div>
 </template>
@@ -19,15 +18,15 @@ import Banner from '../components/diceBanner'
 import Player from '../components/playerCards'
 import DiceContainer from '../components/diceContainer'
 import CurrentScore from '../components/CurrentScore'
-// import ChatBox from '../components/chatBox'
+import ChatBox from '../components/chatBox'
 export default {
   name: 'DiceGamble',
   components: {
     Banner,
     Player,
     DiceContainer,
-    CurrentScore
-    // ChatBox
+    CurrentScore,
+    ChatBox
   },
   data: function () {
     return {

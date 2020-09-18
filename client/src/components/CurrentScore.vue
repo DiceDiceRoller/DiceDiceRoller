@@ -5,9 +5,6 @@
               34
           </div>
       </div>
-      <div class="roleDice">
-          <h3 @click="roleDice">Role Dice</h3>
-      </div>
   </div>
 </template>
 

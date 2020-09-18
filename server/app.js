@@ -28,13 +28,12 @@ io.on('connection', (socket) => {
 
   // ========================= CHATROOM =========================
   socket.emit('connections', Object.keys(io.sockets.connected).length);
-
   socket.on('disconnect', () => {
       console.log("A user disconnected");
   });
 
-  socket.on('chat-message', (data) => {
-      socket.broadcast.emit('chat-message', (data));
+  socket.on('chatMessage', (data) => {
+      socket.broadcast.emit('chatMessage', (data));
   });
 
   socket.on('typing', (data) => {
@@ -46,6 +45,7 @@ io.on('connection', (socket) => {
   });
 
   socket.on('joined', (data) => {
+      console.log(data, "SERVER")
       socket.broadcast.emit('joined', (data));
   });
 
