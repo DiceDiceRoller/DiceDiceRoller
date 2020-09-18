@@ -1,6 +1,5 @@
 <template>
    <div class="about">
-    <h1> All About Dice </h1>
     <Banner></Banner>
     <Board></Board>
     <CurrentScore></CurrentScore>
