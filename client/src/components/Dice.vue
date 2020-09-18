@@ -5,32 +5,33 @@
             <img :src="image" :style="st" @click="getRandom">
         </div>
 
-        <div class="content" v-if="!start">
+        <!-- <div class="content" v-if="!start">
             <h2>Player 1 Score : {{firstUser}}</h2>
             <h2>Player 2 Score : {{secondUser}} </h2>
+        </div> -->
+        <div class="content">
+          <button @click="getRandom" v-if="!start" class="btn">Roll Dice</button>
+          <button @click="resetGame"  v-if="!start" >Restart</button>
         </div>
-
-        <button @click="getRandom" v-if="!start" class="btn">Roll Dice</button>
-        <button @click="resetGame"  v-if="!start" >Restart</button>
 
   </div>
 </template>
 
 <script>
-import DiceOne from '../assets/dice-1.png'
-import DiceTwo from '../assets/dice-2.png'
-import DiceThree from '../assets/dice-3.png'
-import DaduFour from '../assets/dice-4.png'
-import DaduFive from '../assets/dice-5.png'
-import DaduSix from '../assets/dice-6.png'
+import DiceOne from '../assets/dice_1.png'
+import DiceTwo from '../assets/dice_2.png'
+import DiceThree from '../assets/dice_3.png'
+import DaduFour from '../assets/dice_4.png'
+import DaduFive from '../assets/dice_5.png'
+import DaduSix from '../assets/dice_6.png'
 export default {
   name: 'app',
   data () {
     return {
       start: true,
       image: '',
-      firstUser: 0,
-      secondUser: 0,
+      // firstUser: 0,
+      // secondUser: 0,
       st: '',
       dice1: DiceOne,
       dice2: DiceTwo,
@@ -196,8 +197,8 @@ img {
   box-shadow: 2px 10px 10px black;
   transition: all 0.3s;
   width: 10rem;
-  margin-top: 11rem;
-  margin-right: 2rem;
+  height: 170px;
+  margin: 0 auto;
 }
 .score {
   background-color: #dfff;
