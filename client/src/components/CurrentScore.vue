@@ -2,7 +2,7 @@
   <div class="mx-auto">
       <div class="container row mx-auto ">
           <div class="totalscore mx-auto">
-              34
+              {{buffer}}
           </div>
       </div>
   </div>
@@ -10,7 +10,8 @@
 
 <script>
 export default {
-  name: 'TotalScore'
+  name: 'TotalScore',
+  props: ['buffer']
 }
 </script>
 

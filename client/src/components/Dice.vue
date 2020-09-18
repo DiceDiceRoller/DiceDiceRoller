@@ -1,14 +1,5 @@
 <template>
-    <div>
-        <div class="imgss">
-            <h3 v-if="start" @click="startGame">Start game</h3>
-            <img :src="image" :style="st" @click="getRandom">
-        </div>
-        <!-- <div class="content">
-          <button @click="getRandom" v-if="!start" class="btn">Roll Dice</button>
-          <button @click="resetGame"  v-if="!start" >Restart</button>
-        </div> -->
-
+  <div>
   </div>
 </template>
 
