@@ -87,6 +87,12 @@ body {
 lottie-player {
     max-height: 30vh;
 }
+.lottie-banner {
+  display: flex;
+}
+.player-1 {
+  transform: scaleX(-1);
+}
 
 .dice-container {
     border-radius: 50px;
