@@ -28,11 +28,11 @@ export default {
         content: 'input'
       })
         .then((value) => {
-          this.playerName = value
-          this.$socket.emit('playerName', value)
+          this.$store.commit('addPlayer', value)
+          this.$socket.emit('addPlayer', value)
           swal(`Alright ${value}, let's get it!`)
             .then(value => {
-              this.$router.push('/home')
+              this.$router.push('/lobby')
             })
         })
     }
