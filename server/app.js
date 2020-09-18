@@ -13,7 +13,6 @@ app.use(cors())
 
 const data = {
   playerPoints: {},
-  rollCounter: 0,
   firstDice: 0,
   secondDice: 0,
   pointBuffer: 0
@@ -70,12 +69,12 @@ io.on('connection', (socket) => {
     console.log(players);
     io.sockets.emit('players', players)
 
-    if (players.length == 2) {
-      io.sockets.emit('ready', players)
-    }
+    // if (players.length == 2) {
+    // }
   })
 
   socket.on('start', () => {
+    io.sockets.emit('ready', players)
     turnCounter = Math.floor(Math.random() * players.length)
     io.sockets.emit('setPoint', data.playerPoints)
 
@@ -84,7 +83,6 @@ io.on('connection', (socket) => {
   })
 
   socket.on('roll', () => {
-    data.rollCounter += 1
     data.firstDice = Math.ceil(Math.random() * 6)
     data.secondDice = Math.ceil(Math.random() * 6)
     data.pointBuffer += data.firstDice + data.secondDice
@@ -104,7 +102,7 @@ io.on('connection', (socket) => {
     data.pointBuffer = 0
     console.log(data.playerPoints);
 
-    io.sockets.emit('setPoint', {playerPoints: data.playerPoints, pointBuffer: 0})
+    io.sockets.emit('setPoint', data.playerPoints)
 
     if (data.playerPoints[playerAndPoint.player] >= 50) {
       return io.sockets.emit('win', playerAndPoint.player)

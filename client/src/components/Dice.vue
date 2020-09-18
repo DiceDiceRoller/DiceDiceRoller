@@ -1,10 +1,5 @@
 <template>
     <div>
-        <div class="imgss">
-            <h3 v-if="start" @click="startGame">Start game</h3>
-            <img :src="image" :style="st" @click="getRandom">
-        </div>
-
         <!-- <div class="content" v-if="!start">
             <h2>Player 1 Score : {{firstUser}}</h2>
             <h2>Player 2 Score : {{secondUser}} </h2>

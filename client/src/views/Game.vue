@@ -1,14 +1,29 @@
 <template>
-   <div class="about">
-    <h1> All About Dice </h1>
+   <div class="game">
     <Banner></Banner>
+    <div class="mx-2">
+        <h2 class="player-info">{{active}}</h2>
+      </div>
     <Player
       :players="players"
       :playerPoints="playerPoints"
     ></Player>
-    <CurrentScore></CurrentScore>
+    <CurrentScore
+      :buffer="data.pointBuffer"
+    ></CurrentScore>
+    <div class="row d-flex" v-if="active === this.$store.state.playerName">
+      <div class="col">
+        <h3 @click="roll">Roll</h3>
+      </div>
+      <div class="col">
+        <h3 @click="accept">Hold</h3>
+      </div>
+    </div>
     <div class="container">
-    <DiceContainer></DiceContainer>
+    <DiceContainer
+      :firstDice="data.firstDice"
+      :secondDice="data.secondDice"
+    ></DiceContainer>
     </div>
   </div>
 </template>
@@ -30,11 +45,8 @@ export default {
     return {
       players: this.$store.state.players,
       active: '',
-      playerPoints: {
-        qwe: 33
-      },
+      playerPoints: {},
       data: {
-        rollCounter: 0,
         firstDice: 0,
         secondDice: 0,
         pointBuffer: 0
@@ -44,9 +56,6 @@ export default {
   methods: {
     roll () {
       this.$socket.emit('roll')
-    },
-    start () {
-      this.$socket.emit('start')
     },
     nextTurn () {
       this.$socket.emit('nextTurn')

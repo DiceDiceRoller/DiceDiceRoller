@@ -2,18 +2,16 @@
   <div class="mx-auto">
       <div class="container row mx-auto ">
           <div class="totalscore mx-auto">
-              34
+              {{buffer}}
           </div>
-      </div>
-      <div class="roleDice">
-          <h3 @click="roleDice">Role Dice</h3>
       </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'TotalScore'
+  name: 'TotalScore',
+  props: ['buffer']
 }
 </script>
 

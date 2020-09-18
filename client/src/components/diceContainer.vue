@@ -1,15 +1,17 @@
 <template>
   <div class="dice-container my-5 row p-3">
-    <div class="box ml-1 wobble-hor-top" @click="$event.target.classList.toggle('wobble-hor-top')">
+    <div class="container justify-content-center">
+      <img :src="`./assets/dice_${firstDice}.png`" width="25%">
+      <img :src="`./assets/dice_${secondDice}.png`" width="25%">
     </div>
-    <Dices></Dices>
   </div>
 </template>
 
 <script>
-import Dices from './Dice'
+// import Dices from './Dice'
 export default {
   name: 'diceContainer',
+  props: ['firstDice', 'secondDice'],
   data () {
     return {
       source_one: `../assets/dice_${this.numOne}.png`,
@@ -19,7 +21,7 @@ export default {
     }
   },
   components: {
-    Dices
+    // Dices
   },
   methods: {
   }
