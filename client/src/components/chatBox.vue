@@ -7,7 +7,6 @@
                         {{user.username}} {{user.type}}
                     </p>
                 </div>
-
                 <div v-if="!ready">
                     <h4>Enter your username</h4>
                     <form @submit.prevent="addUser">
@@ -58,8 +57,8 @@ export default {
   overflow-x: hidden; /* Hide horizontal scrollbar */
   overflow-y: scroll; /* Add vertical scrollbar */
 }
-</style>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js"></script>
+</style><
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js"></>
 <script src="/socket.io/socket.io.js"></script>
 
 <script>
@@ -81,7 +80,6 @@ export default {
             window.onbeforeunload = () => {
                 socket.emit('leave', this.username);
             }
-            
             socket.on('chat-message', (data) => {
                 this.messages.push({
                     message: data.message,
@@ -93,7 +91,6 @@ export default {
             socket.on('typing', (data) => {
                 this.typing = data;
             });
-
 
             socket.on('stopTyping', () => {
                 this.typing = false;

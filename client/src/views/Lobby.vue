@@ -20,7 +20,7 @@ import WaitingRoom from '../components/waitingRoom'
 export default {
   name: 'Home',
   components: {
-    Dices,
+    // Dices,
     WaitingRoom
     // diceContainer
     // Dices

@@ -3,7 +3,7 @@
     <div class="mx-auto row">
       <div class="player-one mx-2">
         <div>
-        <h2 class="player-info">{{ playerName }}</h2>
+        <h2 class="player-info">{{playerName}}</h2>
         <h3 class="player-info mt-5">Player Score</h3>
         </div>
         <div class="score my-auto">
@@ -26,6 +26,7 @@
 
 <script>
 export default {
+  name: 'player',
   props: ['playerName', 'playerPoints']
 }
 </script>

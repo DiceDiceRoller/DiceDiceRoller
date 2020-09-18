@@ -12,6 +12,7 @@
     <CurrentScore></CurrentScore>
     <div class="container">
     <DiceContainer></DiceContainer>
+    <!-- <ChatBox></ChatBox> -->
     </div>
   </div>
 </template>
@@ -21,6 +22,7 @@ import Banner from '../components/diceBanner'
 import Player from '../components/playerCards'
 import DiceContainer from '../components/diceContainer'
 import CurrentScore from '../components/CurrentScore'
+// import ChatBox from '../components/chatBox'
 export default {
   name: 'DiceGamble',
   components: {
@@ -28,10 +30,10 @@ export default {
     Player,
     DiceContainer,
     CurrentScore
+    // ChatBox
   },
   data: function () {
     return {
-      players: this.$store.state.players,
       active: '',
       playerPoints: {
         asd: 33
@@ -71,6 +73,11 @@ export default {
     }
   },
   watch: {
+  },
+  computed: {
+    players () {
+      return this.$store.state.players
+    }
   }
 }
 </script>
